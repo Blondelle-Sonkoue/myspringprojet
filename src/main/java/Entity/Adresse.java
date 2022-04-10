@@ -12,8 +12,10 @@ public class Adresse {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String strasse;
-    private String nummer;
+    private int nummer;
+    private int plz;
     private String stadt;
+
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToMany(mappedBy = "adresseList",fetch = FetchType.LAZY)
@@ -23,11 +25,12 @@ public class Adresse {
 
     }
 
-    public Adresse(Long idAdresse, String strasse, String nummer, String stadt) {
+    public Adresse( Long id, String strasse, int nummer, int plz, String stadt) {
         this.id = id;
         this.strasse = strasse;
         this.nummer = nummer;
         this.stadt = stadt;
+        this.plz = plz;
     }
     public void adduser(User user){
         if(UserList == null) UserList = new ArrayList<>();
@@ -50,11 +53,11 @@ public class Adresse {
         this.strasse = strasse;
     }
 
-    public String getNummer() {
+    public int getNummer() {
         return nummer;
     }
 
-    public void setNummer(String nummer) {
+    public void setNummer(int  nummer) {
         this.nummer = nummer;
     }
 

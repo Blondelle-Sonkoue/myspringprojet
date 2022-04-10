@@ -27,8 +27,8 @@ public class AccountService {
     }
 
     public User addNewUser(User user){
-        String pwd = User.getPassword();
-        User.setPassword(passwordEncoder.encode(pwd));
+        String pwd = user.getPassword();
+        user.setPassword(passwordEncoder.encode(pwd));
         return userRepository.save(user);
     }
 
@@ -39,6 +39,6 @@ public class AccountService {
         Role role = roleRepository.findByRoleName(rolename);
         User user = userRepository.findByName(username);
 
-        User.getRoleCollection().add(role);
+        user.getRoleCollection().add(role);
     }
 }

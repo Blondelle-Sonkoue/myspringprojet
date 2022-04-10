@@ -3,7 +3,6 @@ package Controller;
 import Service.EmailRestRequest;
 import Service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/login")
 
 public class LoginController {
+
     @Autowired
     LoginService loginService;
     @GetMapping(path = "testemail/{email}", produces = {MediaType.APPLICATION_NDJSON_VALUE})
@@ -22,10 +22,11 @@ public class LoginController {
             return "Email ist falsch";
         }
     }
-    @GetMapping(path = "testemail/{email}", produces = {MediaType.APPLICATION_NDJSON_VALUE})
+    @GetMapping(path = "testemail", produces = {MediaType.APPLICATION_NDJSON_VALUE})
     public EmailRestRequest testEmail(){
         return new EmailRestRequest("Blondelle@gmail.com");
     }
+
     @PostMapping(path = "testemail", produces = {MediaType.APPLICATION_NDJSON_VALUE})
     public String testEmail(@RequestBody EmailRestRequest emailRestRequest){
         if( loginService.testEmail(emailRestRequest.getEmail())){

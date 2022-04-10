@@ -2,6 +2,8 @@ package Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ import java.util.List;
 
 
 @Entity
+@Data
 @Table(name = "users")
 public class User {
 
@@ -21,13 +24,13 @@ public class User {
     private String stadt;
 
     @JsonIgnore
-    private String password;
+    private static String password;
     private String email;
     private String role;
     private int age;
 
     @ManyToMany (fetch = FetchType.LAZY)
-    private Collection<Role> roleCollection = new ArrayList<>();
+    private static Collection<Role> roleCollection = new ArrayList<>();
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToMany(fetch = FetchType.EAGER)
@@ -41,7 +44,7 @@ public class User {
     @OneToOne
     private Konto konto;
 
-    public User(String name, String vorname, String stadt, String password, String email, String role, int age) {
+    public User(String name, String vorname, String email, int age, String password, String role , String stadt) {
         this.name = name;
         this.vorname = vorname;
         this.stadt = stadt;
@@ -56,13 +59,21 @@ public class User {
 
     }
 
-    public void addRole(Role role){
-        roleCollection.add(role);
-    }
-
 
     public void addAdresse(Adresse adresse){
         if(adresseList == null) adresseList = new ArrayList<>();
         adresseList.add(adresse);
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String encode) {
+    }
+
+
+    public Collection<Role> getRoleCollection() {
+        return null;
     }
 }
