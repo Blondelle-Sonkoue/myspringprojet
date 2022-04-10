@@ -21,13 +21,13 @@ public class User {
     private String stadt;
 
     @JsonIgnore
-    private String password;
+    private static String password;
     private String email;
     private String role;
     private int age;
 
     @ManyToMany (fetch = FetchType.LAZY)
-    private Collection<Role> roleCollection = new ArrayList<>();
+    private static Collection<Role> roleCollection = new ArrayList<>();
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToMany(fetch = FetchType.EAGER)
@@ -41,7 +41,7 @@ public class User {
     @OneToOne
     private Konto konto;
 
-    public User(String name, String vorname, String stadt, String password, String email, String role, int age) {
+    public User(String name, String vorname, String email, int age, String password, String role , String stadt) {
         this.name = name;
         this.vorname = vorname;
         this.stadt = stadt;
@@ -55,6 +55,19 @@ public class User {
     public User() {
 
     }
+
+    public static String getPassword() {
+        return password;
+    }
+
+    public static void setPassword(String password) {
+        User.password = password;
+    }
+
+    public static <role> List<role> getRoleCollection() {
+        return (List<role>) roleCollection;
+    }
+
 
     public void addRole(Role role){
         roleCollection.add(role);

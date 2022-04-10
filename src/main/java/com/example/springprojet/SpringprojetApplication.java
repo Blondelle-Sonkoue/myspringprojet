@@ -3,6 +3,8 @@ package com.example.springprojet;
 import Dao.AdresseRepository;
 import Dao.KontoRepository;
 import Dao.UserRepository;
+import Entity.Role;
+import Entity.User;
 import Security.service.AccountService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -37,6 +39,21 @@ public class SpringprojetApplication {
 
 
     return args -> {
+        if (true) {
+            accountService.addNewRole(new Role(null,"USER"));
+            accountService.addNewRole(new Role(null,"ADMIN"));
+            accountService.addNewRole(new Role(null,"CUSTOMER_MANAGER"));
+            accountService.addNewRole(new Role(null,"PRODUCT_MANAGER"));
 
+            accountService.addNewUser(new User("Meyer","Sarah",null, 25, "Ms@25",null,null));
+            accountService.addNewUser(new User("klaiber","Karim",null, 19, "kka!10",null,null));
+            accountService.addNewUser(new User("Weber","Hug",null, 31, "Whu3&",null,null));
+
+            accountService.addRoleToUser("Meyer", "USER");
+            accountService.addRoleToUser("klaiber", "USER");
+            accountService.addRoleToUser("Weber", "ADMIN");
+
+        }
+    };
     }
 }
