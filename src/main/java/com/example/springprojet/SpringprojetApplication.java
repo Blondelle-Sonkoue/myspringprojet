@@ -3,8 +3,11 @@ package com.example.springprojet;
 import Dao.AdresseRepository;
 import Dao.KontoRepository;
 import Dao.UserRepository;
+<<<<<<< HEAD
 import Entity.Adresse;
 import Entity.Konto;
+=======
+>>>>>>> 14f7ceb15ccdeeb68f6db18eff01076fac8cec82
 import Entity.Role;
 import Entity.User;
 import Security.service.AccountService;
@@ -41,6 +44,7 @@ public class SpringprojetApplication {
 
 
     return args -> {
+<<<<<<< HEAD
         if (true){
             User user1 = new User("Hans","Franck",null, 35, "Hfra%25",null,null);
             User user2 = new User("Nono","Willy",null, 27, "5640w",null,null);
@@ -87,6 +91,14 @@ public class SpringprojetApplication {
             accountService.addNewRole(new Role(null,"CUSTOMER_MANAGER"));
             accountService.addNewRole(new Role(null,"PRODUCT_MANAGER"));
 
+=======
+        if (true) {
+            accountService.addNewRole(new Role(null,"USER"));
+            accountService.addNewRole(new Role(null,"ADMIN"));
+            accountService.addNewRole(new Role(null,"CUSTOMER_MANAGER"));
+            accountService.addNewRole(new Role(null,"PRODUCT_MANAGER"));
+
+>>>>>>> 14f7ceb15ccdeeb68f6db18eff01076fac8cec82
             accountService.addNewUser(new User("Meyer","Sarah",null, 25, "Ms@25",null,null));
             accountService.addNewUser(new User("klaiber","Karim",null, 19, "kka!10",null,null));
             accountService.addNewUser(new User("Weber","Hug",null, 31, "Whu3&",null,null));

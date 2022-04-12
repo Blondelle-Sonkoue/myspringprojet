@@ -59,6 +59,26 @@ public class User {
 
     }
 
+<<<<<<< HEAD
+=======
+    public static String getPassword() {
+        return password;
+    }
+
+    public static void setPassword(String password) {
+        User.password = password;
+    }
+
+    public static <role> List<role> getRoleCollection() {
+        return (List<role>) roleCollection;
+    }
+
+
+    public void addRole(Role role){
+        roleCollection.add(role);
+    }
+
+>>>>>>> 14f7ceb15ccdeeb68f6db18eff01076fac8cec82
 
     public void addAdresse(Adresse adresse){
         if(adresseList == null) adresseList = new ArrayList<>();
